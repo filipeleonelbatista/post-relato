@@ -42,10 +42,28 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
+const articles = [
+  {
+    title: "Como está sua pesquisa de emprego?",
+    description: "Recentemente, passei por uma experiência curiosa: fui promovido a cliente da empresa onde trabalhava. 😅 O projeto...",
+    link: "https://www.tabnews.com.br/filipeleonelbatista/como-esta-sua-pesquisa-de-emprego-aprendizado-na-busca-por-novas-oportunidades"
+  },
+  {
+    title: "Analisaram o meu linkedin e fiquei surpreso...",
+    description: "Recebi um excelente e divertido feedback essa semana sobre meu perfil do LinkedIn e gostaria de compartilhar com vocês...",
+    link: "https://www.tabnews.com.br/filipeleonelbatista/pedi-pra-alguem-analisar-o-meu-e-fiquei-surpreso"
+  },
+  {
+    title: "Criando Métricas e Analisando Processos de contratação...",
+    description: "Recentemente criei um artigo aqui no Tabnews falando sobre A Importância de Dedicar Tempo Integral à Procura de Emprego e...",
+    link: "https://www.tabnews.com.br/filipeleonelbatista/do-artigo-a-pratica-criando-metricas-e-analisando-processos-na-minha-busca-por-oportunidades-profissionais"
+  }
+]
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <div className='flex w-full items-center justify-center'>
-      <div className='container mt-4'>
+      <div className='container mt-4 max-w-xl'>
 
         <article className='flex flex-col gap-4 mb-6'>
           <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">Como foi minha pesquisa de empregos</h2>
@@ -57,10 +75,10 @@ createRoot(document.getElementById('root')!).render(
             </div>
           </a>
 
-          <p className="mt-4 italic max-w-80 text-gray-700 dark:text-gray-300">
+          <p className="mt-4 italic max-w-md text-gray-700 dark:text-gray-300">
             "Essa busca por emprego aconteceu em um momento tranquilo, no qual eu
             estava crescendo na empresa. Isso não teve muita importância, pois o
-            contrato acabou, então fui buscar o mercado novamente."
+            contrato acabou, então fui colocado diante do mercado temido, novamente."
           </p>
 
           <hr />
@@ -71,7 +89,7 @@ createRoot(document.getElementById('root')!).render(
                 TLDR;
               </h4>
 
-              <ul className="mt-4 space-y-4 text-gray-700 dark:text-gray-300 list-disc list-inside">
+              <ul className="mt-4 space-y-4 text-sm text-gray-700 dark:text-gray-300 list-disc list-inside">
                 <li>
                   <span className="font-semibold">Foto Headshot Profissional:</span> De preferência, use a mesma em todas as redes sociais.
                 </li>
@@ -326,13 +344,30 @@ createRoot(document.getElementById('root')!).render(
           </h4>
 
           <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Isso foi um processo para mim. Compartilhei vários pontos que podem 
-            acabar trazendo algumas dicas do que você pode fazer por você. 
-            Você tem que entender que o cenário de cada um pode variar, e os 
-            resultados também. Se você se comparar com os outros, vai falhar. 
-            Busque se comparar com você mesmo, melhorar sua apresentação e 
+            Isso foi um processo para mim. Compartilhei vários pontos que podem
+            acabar trazendo algumas dicas do que você pode fazer por você.
+            Você tem que entender que o cenário de cada um pode variar, e os
+            resultados também. Se você se comparar com os outros, vai falhar.
+            Busque se comparar com você mesmo, melhorar sua apresentação e
             analisar os números. Assim, você vai conseguir melhorar.
           </p>
+
+          <hr />
+
+          <div className='flex flex-col md:flex-row gap-4'>
+            {
+              articles.map((article, index) => (
+                <Card key={index}>
+                  <img className='rounded-t-xl' src="./tn.png" alt="Tabnews" />
+                  <CardContent className='p-4 flex flex-col gap-4'>
+                    <h6 className='font-bold text-sm mb-2'>{article.title}</h6>
+                    <p className='text-xs mb-2'>{article.description}</p>
+                    <a className='border hover:border-white transition-all cursor-pointer flex flex-row gap-2 items-center justify-center rounded-md p-2' href={article.link} target="_blank" rel="noreferer noopener">Ver artigo</a>
+                  </CardContent>
+                </Card>
+              ))
+            }
+          </div>
 
           <hr />
 
