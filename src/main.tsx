@@ -321,12 +321,12 @@ createRoot(document.getElementById('root')!).render(
                     dataKey="recived"
                     stackId="a"
                     cornerRadius={5}
-                    fill="hsl(var(--chart-5))"
+                    fill="hsl(var(--chart-1))"
                     className="stroke-transparent stroke-2"
                   />
                   <RadialBar
                     dataKey="notRecived"
-                    fill="hsl(var(--chart-1))"
+                    fill="hsl(var(--chart-5))"
                     stackId="a"
                     cornerRadius={5}
                     className="stroke-transparent stroke-2"
@@ -465,12 +465,12 @@ createRoot(document.getElementById('root')!).render(
                     dataKey="passive"
                     stackId="a"
                     cornerRadius={5}
-                    fill="hsl(var(--chart-5))"
+                    fill="hsl(var(--chart-1))"
                     className="stroke-transparent stroke-2"
                   />
                   <RadialBar
                     dataKey="active"
-                    fill="hsl(var(--chart-1))"
+                    fill="hsl(var(--chart-5))"
                     stackId="a"
                     cornerRadius={5}
                     className="stroke-transparent stroke-2"
