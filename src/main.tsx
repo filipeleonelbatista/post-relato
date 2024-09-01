@@ -4,7 +4,7 @@ import './index.css'
 
 import { Linkedin, Instagram, Mail } from 'lucide-react';
 import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, Label, PolarRadiusAxis, RadialBar, RadialBarChart, XAxis, YAxis } from "recharts"
 import {
   Card,
   CardContent,
@@ -29,11 +29,37 @@ const chartData = [
   { title: "Entrevista técnica agendada", counter: 6 },
   { title: "Entrevista técnica realizada", counter: 6 },
   { title: "Teste concluído", counter: 4 },
-  { title: "Feedback não recebido", counter: 107 },
-  { title: "Feedback recebido", counter: 30 },
-  { title: "Finalizado com negativa", counter: 136 },
-  { title: "Admitido", counter: 1 },
 ]
+
+const feedbackData = [
+  { title: "Feedback", recived: 107, notRecived: 30 },
+]
+
+const chartConfigFeedback = {
+  recived: {
+    label: "Feedback recebido",
+    color: "hsl(var(--chart-1))",
+  },
+  notRecived: {
+    label: "Sem feedback",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig
+
+const acceptanceRatio = [
+  { title: "Contratação", declined: 136, accepted: 1 },
+]
+
+const chartConfigAcceptance = {
+  declined: {
+    label: "Descartado",
+    color: "hsl(var(--chart-1))",
+  },
+  notRecived: {
+    label: "Adimitido",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig
 
 const chartConfig = {
   desktop: {
@@ -230,6 +256,151 @@ createRoot(document.getElementById('root')!).render(
               </div>
             </CardFooter>
           </Card>
+
+
+          <Card>
+            <CardContent>
+              <CardHeader className="items-center pb-0">
+                <CardTitle>Feedbacks recebidos/não recebidos</CardTitle>
+                <CardDescription>Junho - Agosto 2024</CardDescription>
+              </CardHeader>
+              <ChartContainer
+                config={chartConfigFeedback}
+              >
+                <RadialBarChart
+                  data={feedbackData}
+                  endAngle={180}
+                  innerRadius={80}
+                  outerRadius={130}
+                >
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent hideLabel />}
+                  />
+                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) - 16}
+                                className="fill-foreground text-2xl font-bold"
+                              >
+                                {(feedbackData[0].recived + feedbackData[0].notRecived).toLocaleString()}
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 4}
+                                className="fill-muted-foreground"
+                              >
+                                Feedbacks
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                  </PolarRadiusAxis>
+                  <RadialBar
+                    dataKey="recived"
+                    stackId="a"
+                    cornerRadius={5}
+                    fill="hsl(var(--chart-5))"
+                    className="stroke-transparent stroke-2"
+                  />
+                  <RadialBar
+                    dataKey="notRecived"
+                    fill="hsl(var(--chart-1))"
+                    stackId="a"
+                    cornerRadius={5}
+                    className="stroke-transparent stroke-2"
+                  />
+                </RadialBarChart>
+              </ChartContainer>
+            </CardContent>
+            <CardFooter className="flex-col gap-2 text-sm">
+              <div className="flex gap-2 font-medium leading-none">
+                Taxa de retorno de {((feedbackData[0].notRecived / feedbackData[0].recived) * 100).toFixed(2)}% <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="leading-none text-muted-foreground">
+                Mostrando os totais do período de junho a agosto de 2024.
+              </div>
+            </CardFooter>
+          </Card>
+          <Card>
+            <CardHeader className="items-center pb-0">
+              <CardTitle>Adimissão/Rejeitados</CardTitle>
+              <CardDescription>Junho - Agosto 2024</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer
+                config={chartConfigAcceptance}
+              >
+                <RadialBarChart
+                  data={acceptanceRatio}
+                  endAngle={180}
+                  innerRadius={80}
+                  outerRadius={130}
+                >
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent hideLabel />}
+                  />
+                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) - 16}
+                                className="fill-foreground text-2xl font-bold"
+                              >
+                                {((acceptanceRatio[0].accepted / acceptanceRatio[0].declined) * 100).toLocaleString()}%
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 4}
+                                className="fill-muted-foreground"
+                              >
+                                Taxa de Aceitação
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                  </PolarRadiusAxis>
+                  <RadialBar
+                    dataKey="declined"
+                    stackId="a"
+                    cornerRadius={5}
+                    fill="hsl(var(--chart-5))"
+                    className="stroke-transparent stroke-2"
+                  />
+                  <RadialBar
+                    dataKey="accepted"
+                    fill="hsl(var(--chart-1))"
+                    stackId="a"
+                    cornerRadius={5}
+                    className="stroke-transparent stroke-2"
+                  />
+                </RadialBarChart>
+              </ChartContainer>
+            </CardContent>
+            <CardFooter className="flex-col items-start gap-2 text-sm">
+              <div className="flex gap-2 font-medium leading-none">
+                Taxa de sucesso 0,73% <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="leading-none text-muted-foreground">
+                Mostrando os totais do período de junho a agosto de 2024.
+              </div>
+            </CardFooter>
+          </Card>
+
 
           <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
             Qual foi o aprendizado disso?
