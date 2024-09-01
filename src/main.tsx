@@ -91,7 +91,7 @@ createRoot(document.getElementById('root')!).render(
     <div className='flex w-full items-center justify-center'>
       <div className='container mt-4 max-w-xl'>
 
-        <article className='flex flex-col gap-4 mb-6'>
+        <article className='flex flex-col gap-4 mb-6 p-4'>
           <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">Como foi minha pesquisa de empregos</h2>
           <a href="https://filipeleonelbatista.dev.br" className="flex items-center space-x-4 mt-4">
             <img src="https://github.com/filipeleonelbatista.png" alt="Filipe Batista | Frontend Developer | React Especialist | Typescript | Javascript" className="w-16 h-16 rounded-full" />
