@@ -46,6 +46,21 @@ const chartConfigFeedback = {
   },
 } satisfies ChartConfig
 
+const searchMethodData = [
+  { title: "Método de procura", active: 125, passive: 12 },
+]
+
+const chartConfigSearchMethod = {
+  passive: {
+    label: "Passiva",
+    color: "hsl(var(--chart-1))",
+  },
+  active: {
+    label: "Ativa",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig
+
 const acceptanceRatio = [
   { title: "Contratação", declined: 136, accepted: 1 },
 ]
@@ -257,7 +272,6 @@ createRoot(document.getElementById('root')!).render(
             </CardFooter>
           </Card>
 
-
           <Card>
             <CardContent>
               <CardHeader className="items-center pb-0">
@@ -288,14 +302,14 @@ createRoot(document.getElementById('root')!).render(
                                 y={(viewBox.cy || 0) - 16}
                                 className="fill-foreground text-2xl font-bold"
                               >
-                                {(feedbackData[0].recived + feedbackData[0].notRecived).toLocaleString()}
+                                {(feedbackData[0].recived).toLocaleString()}
                               </tspan>
                               <tspan
                                 x={viewBox.cx}
                                 y={(viewBox.cy || 0) + 4}
                                 className="fill-muted-foreground"
                               >
-                                Feedbacks
+                                Feedbacks Recebidos
                               </tspan>
                             </text>
                           )
@@ -329,6 +343,7 @@ createRoot(document.getElementById('root')!).render(
               </div>
             </CardFooter>
           </Card>
+
           <Card>
             <CardHeader className="items-center pb-0">
               <CardTitle>Adimissão/Rejeitados</CardTitle>
@@ -401,6 +416,74 @@ createRoot(document.getElementById('root')!).render(
             </CardFooter>
           </Card>
 
+          <Card>
+            <CardHeader className="items-center pb-0">
+              <CardTitle>Metodos de busca</CardTitle>
+              <CardDescription>Junho - Agosto 2024</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ChartContainer
+                config={chartConfigSearchMethod}
+              >
+                <RadialBarChart
+                  data={searchMethodData}
+                  endAngle={180}
+                  innerRadius={80}
+                  outerRadius={130}
+                >
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent hideLabel />}
+                  />
+                  <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) - 16}
+                                className="fill-foreground text-2xl font-bold"
+                              >
+                                {(searchMethodData[0].active).toLocaleString()}
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 4}
+                                className="fill-muted-foreground"
+                              >
+                                Procura ativa
+                              </tspan>
+                            </text>
+                          )
+                        }
+                      }}
+                    />
+                  </PolarRadiusAxis>
+                  <RadialBar
+                    dataKey="passive"
+                    stackId="a"
+                    cornerRadius={5}
+                    fill="hsl(var(--chart-5))"
+                    className="stroke-transparent stroke-2"
+                  />
+                  <RadialBar
+                    dataKey="active"
+                    fill="hsl(var(--chart-1))"
+                    stackId="a"
+                    cornerRadius={5}
+                    className="stroke-transparent stroke-2"
+                  />
+                </RadialBarChart>
+              </ChartContainer>
+            </CardContent>
+            <CardFooter className="flex-col items-start gap-2 text-sm">
+              <div className="leading-none text-muted-foreground">
+                Mostrando os totais do período de junho a agosto de 2024.
+              </div>
+            </CardFooter>
+          </Card>
 
           <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
             Qual foi o aprendizado disso?
