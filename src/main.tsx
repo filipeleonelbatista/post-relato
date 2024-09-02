@@ -191,7 +191,7 @@ createRoot(document.getElementById('root')!).render(
           </p>
 
           <Card>
-            <CardHeader className="flex flex-col items-stretch space-y-0 p-0 sm:flex-row">
+            <CardHeader className="flex flex-col items-stretch space-y-0 p-0 lg:flex-row">
               <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
                 <CardTitle>Métricas gerais</CardTitle>
                 <CardDescription>
@@ -486,6 +486,18 @@ createRoot(document.getElementById('root')!).render(
           </Card>
 
           <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+            Senta que lá vem a história...
+          </h4>
+
+          <p className="mt-4 text-gray-700 dark:text-gray-300">
+            A partir daqui, vou contar minha história durante esse período.
+            Agradeço muito se quiser saber mais detalhes que eu vou falar a baixo,
+            mas o geral já foi dito a cima, então, obrigado por ler até aqui! 😅
+          </p>
+
+          <hr />
+
+          <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
             Qual foi o aprendizado disso?
           </h4>
 
@@ -497,16 +509,18 @@ createRoot(document.getElementById('root')!).render(
             onde eu vou compartilhar muitas coisas a respeito de processos e como melhorar.
           </p>
 
-          <p className="mt-4 italic text-gray-700 dark:text-gray-300">
-            <b>Um pequeno desabafo.</b> (Suspiro de sofrimento)
-          </p>
+          <div className='w-full flex flex-col gap-4 border rounded-xl px-6 pb-6 bg-gray-700'>
+            <p className="mt-4 text-gray-700 dark:text-gray-300">
+              <b>😔 Um pequeno desabafo.</b> <span className="italic">(Suspiro de sofrimento)</span>
+            </p>
 
-          <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Para você ter um contexto, eu sou pai de gêmeos e casado,
-            (porque a vida precisa de desafios 🤣) e imagine como fica a cabeça
-            de alguém que recebe X e então passa a receber X/3 pelo seguro.
-            Isso me deixou muito preocupado com o que iria acontecer.
-          </p>
+            <p className="mt-4 text-gray-700 dark:text-gray-300">
+              Para você ter um contexto, eu sou pai de gêmeos e casado,
+              (porque a vida precisa de desafios 🤣) e imagine como fica a cabeça
+              de alguém que recebe X e então passa a receber X/3 pelo seguro desemprego.
+              Isso me deixou muito preocupado com o que iria acontecer.
+            </p>
+          </div>
 
           <p className="mt-4 text-gray-700 dark:text-gray-300">
             Com isso, eu comecei a procurar emprego, conectando-me com recrutadores
@@ -522,35 +536,41 @@ createRoot(document.getElementById('root')!).render(
             alinhadas com minhas techs.
           </p>
 
-          <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Infelizmente, não consegui me realocar internamente e fui para o mercado.
+          <hr />
+
+          <p className="font-bold text-xl text-center my-4 text-gray-700 dark:text-gray-300">
+            Infelizmente, não consegui me realocar internamente na empresa que eu estava e voltei para o mercado.
           </p>
+
+          <hr />
 
           <p className="mt-4 text-gray-700 dark:text-gray-300">
             No mercado, fui percebendo um ponto importante, que quero trazer aqui:
-            não tenha uma stack/tecnologia de estimação. Seja especialista em uma
-            coisa e, depois, estude outras coisas.
+            <b> não tenha uma stack/tecnologia de estimação.</b> <span className='italic'>
+              Seja especialista em uma coisa e, depois, estude outras coisas.
+            </span>
           </p>
 
           <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Então, sou especialista em <b>REACT JS</b> e conhecedor de <b>React Native</b>,
-            apesar de serem muito parecidos, mas cada um com suas nuances.
-            Enfim, comecei a entender que eu precisaria voltar a ser fullstack
-            ou focar em backend com <b>Java, Python, Node JS e talvez Ruby</b>.
+            Então, sou especialista em <b>REACT JS</b> e <b>React Native</b>.
+            Comecei a entender que eu precisaria voltar a ser fullstack
+            ou focar em backend com <b>Java, Python, Node JS, PHP e talvez Ruby</b>.
           </p>
 
           <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Busquei treinamentos e aprendi bastante em <b>Java, Spring Boot, e Python Flask</b>,
-            mas não sinto que estou preparado para desempenhar diretamente com
-            essas tecnologias. No entanto, entendo e consigo fazer algumas operações.
+            Busquei treinamentos e aprendi bastante em <b>Java, Spring Boot, PHP Laravel e Python Flask</b>,
+            mas não sinto que estou preparado como estou em <b>React JS</b> para desempenhar diretamente com
+            essas tecnologias. No entanto, entendo e consigo executar algumas operações por entender os conceitos.
           </p>
 
-          <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Foi então que percebi que não entendia muitas coisas pelo nome, mas
-            sabia fazer o que era necessário. Então, comecei a estudar e entender
-            conceitos e me preparar para as entrevistas, pois muita coisa eu
-            já entendia.
-          </p>
+          <div className='w-full flex flex-col gap-4 border rounded-xl px-6 pb-6 bg-gray-700'>
+            <p className="mt-4 text-center text-gray-700 dark:text-gray-300">
+              Foi então que percebi que não entendia muitas coisas pelo nome, mas
+              sabia fazer o que era necessário. Então, comecei a estudar e entender
+              conceitos e me preparar para as entrevistas, pois muita coisa eu
+              já entendia.
+            </p>
+          </div>
 
           <p className="mt-4 text-gray-700 dark:text-gray-300">
             Com isso, tive alguns feedbacks. O primeiro eu conto mais
@@ -565,8 +585,8 @@ createRoot(document.getElementById('root')!).render(
           </p>
 
           <p className="mt-4 text-gray-700 dark:text-gray-300">
-            Os principais feedbacks vêm de perto, basta você ter um momento para
-            entender isso. Depois de compreender, minha esposa me preparou para
+            <b>Os principais feedbacks vêm de perto, basta você ter um momento para
+            entender isso.</b> Depois de compreender, minha esposa me preparou para
             algumas entrevistas, até indicando alguns cuidados com cabelo e
             vestuário para apresentar, mesmo em entrevistas remotas.
             Isso teve sua importância.
@@ -579,7 +599,7 @@ createRoot(document.getElementById('root')!).render(
             <b> DESENVOLVEDOR FRONTEND e ESPECIALISTA REACT JS</b>.
           </p>
 
-          <p className="mt-4 text-gray-700 dark:text-gray-300">
+          <p className="mt-4 italic font-bold text-gray-700 dark:text-gray-300">
             Isso me ajudou a organizar meu LinkedIn, e então começaram a aparecer
             oportunidades na minha área, mas a maioria pedia requisitos ainda
             muito complexos para mim.
@@ -613,7 +633,7 @@ createRoot(document.getElementById('root')!).render(
               articles.map((article, index) => (
                 <Card key={index}>
                   <img className='rounded-t-xl' src="./tn.png" alt="Tabnews" />
-                  <CardContent className='p-4 flex flex-col gap-4'>
+                  <CardContent className='p-2 flex flex-col gap-4'>
                     <h6 className='font-bold text-sm mb-2'>{article.title}</h6>
                     <p className='text-xs mb-2'>{article.description}</p>
                     <a className='border hover:border-white transition-all cursor-pointer flex flex-row gap-2 items-center justify-center rounded-md p-2' href={article.link} target="_blank" rel="noreferer noopener">Ver artigo</a>
